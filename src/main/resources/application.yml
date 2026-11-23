@@ -1,5 +1,8 @@
 server:
     port: ${SERVER_PORT:8083}
+    error:
+        # Envía el motivo de los 400 (por ejemplo, teléfono inválido) al BFF
+        include-message: always
 spring:
     application:
         name: ms-clientes
