@@ -1,5 +1,8 @@
 package cl.duoc.ms_clientes.controller;
 
+import cl.duoc.ms_clientes.dto.DireccionDespacho;
+import org.springframework.web.bind.annotation.PutMapping;
+
 import cl.duoc.ms_clientes.dto.UsuarioRequest;
 import cl.duoc.ms_clientes.dto.UsuarioResponse;
 import cl.duoc.ms_clientes.service.UsuarioService;
@@ -27,5 +30,10 @@ public class UsuarioController {
     @PostMapping
     public UsuarioResponse buscarOCrearUsuario(@RequestBody UsuarioRequest request) {
         return UsuarioResponse.from(usuarioService.buscarOCrearUsuario(request));
+    }
+
+    @PutMapping("/{oid}/direccion")
+    public UsuarioResponse guardarDireccion(@PathVariable String oid, @RequestBody DireccionDespacho direccion) {
+        return UsuarioResponse.from(usuarioService.guardarDireccion(oid, direccion));
     }
 }

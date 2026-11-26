@@ -6,13 +6,15 @@ public record UsuarioResponse(
         String oid,
         String nombre,
         String email,
-        String rol) {
+        String rol,
+        DireccionDespacho direccion) {
 
     public static UsuarioResponse from(Usuario usuario) {
         return new UsuarioResponse(
                 usuario.getEntraIdOid(),
                 usuario.getNombre(),
                 usuario.getEmail(),
-                usuario.getRol().toValue());
+                usuario.getRol().toValue(),
+                DireccionDespacho.from(usuario));
     }
 }
